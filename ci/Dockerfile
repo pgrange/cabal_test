@@ -53,7 +53,7 @@ RUN apt-get update && \
       wget \
       libncursesw5 \
       libtool \
-      autoconf \
+      autoconf && \
     rm -rf /var/lib/apt/lists/*
 
 # Install libsodium
