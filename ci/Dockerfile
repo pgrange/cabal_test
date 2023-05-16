@@ -33,6 +33,29 @@ RUN \
     ghcup -v install ghc --isolate /usr/local --force 8.10.7 && \
     ghcup -v install cabal --isolate /usr/local/bin --force 3.10.1.0
 
+RUN apt-get update && \
+    # Install cardano-node dependencies see https://developers.cardano.org/docs/get-started/installing-cardano-node/#linux
+    apt-get install -y \
+      automake \
+      build-essential \
+      pkg-config \
+      libffi-dev \
+      libgmp-dev \
+      libssl-dev \
+      libtinfo-dev \
+      libsystemd-dev \
+      zlib1g-dev \
+      make \
+      g++ \
+      tmux \
+      git \
+      jq \
+      wget \
+      libncursesw5 \
+      libtool \
+      autoconf \
+    rm -rf /var/lib/apt/lists/*
+
 # Install libsodium
 WORKDIR /srv/
 RUN git clone https://github.com/input-output-hk/libsodium
