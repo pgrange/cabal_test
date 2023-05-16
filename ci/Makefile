@@ -8,3 +8,8 @@ cardano-node.tar.gz:
 
 ghcup:
 	curl https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup
+
+clean:
+	-rm cardano-node.tar.gz ghcup
+
+.phony: build clean
