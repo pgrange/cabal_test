@@ -18,4 +18,5 @@ jobs:
           image: ghcr.io/pgrange/cabal_test:main
           options: -v ${{ github.workspace }}:/src
           run: |
+            cabal update
             cabal build all

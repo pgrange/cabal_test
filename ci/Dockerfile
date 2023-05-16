@@ -33,4 +33,26 @@ RUN \
     ghcup -v install ghc --isolate /usr/local --force 8.10.7 && \
     ghcup -v install cabal --isolate /usr/local/bin --force 3.10.1.0
 
+# Install libsodium
+WORKDIR /srv/
+RUN git clone https://github.com/input-output-hk/libsodium
+WORKDIR /srv/libsodium
+RUN git checkout 66f017f1
+RUN ./autogen.sh
+RUN ./configure
+RUN make
+RUN make install
+ENV LD_LIBRARY_PATH="/usr/local/lib:${LD_LIBRARY_PATH}"
+ENV PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:${PKG_CONFIG_PATH}"
+
+# Install secp256k1
+WORKDIR /srv/
+RUN git clone https://github.com/bitcoin-core/secp256k1
+WORKDIR /srv/secp256k1
+RUN git checkout ac83be33
+RUN ./autogen.sh
+RUN ./configure --enable-module-schnorrsig --enable-experimental
+RUN make
+RUN make install
+
 WORKDIR /src
