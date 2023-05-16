@@ -32,3 +32,5 @@ ENV PATH="${PATH}:/srv/bin"
 RUN \
     ghcup -v install ghc --isolate /usr/local --force 8.10.7 && \
     ghcup -v install cabal --isolate /usr/local/bin --force 3.10.1.0
+
+WORKDIR /src
