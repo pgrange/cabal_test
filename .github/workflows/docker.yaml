@@ -43,7 +43,6 @@ jobs:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: build dependencies
-        run: SOME_TOKEN_WITHOUT_PERMISSIONS=${{ secrets.GITHUB_TOKEN }} make build_dependencies
         run: |
           cd ci
           SOME_TOKEN_WITHOUT_PERMISSIONS=${{ secrets.GITHUB_TOKEN }} make build_dependencies
