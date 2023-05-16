@@ -15,7 +15,7 @@ jobs:
         name: Run the build process with Docker
         uses: addnab/docker-run-action@v3
         with:
-          image: aschmelyun/cleaver:latest
+          image: ghcr.io/pgrange/cabal_test:main
           options: -v ${{ github.workspace }}:/src
           run: |
             cabal build all
